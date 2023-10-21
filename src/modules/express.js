@@ -9,6 +9,11 @@ const port = 8080;
 
 app.use(express.json())
 
+app.use((req, res, next) => {
+    console.log(req.url);
+    next();
+})
+
 app.use('/items', itemsRoute)
 app.use('/users', usersRoute)
 

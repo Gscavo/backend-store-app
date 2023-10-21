@@ -7,8 +7,6 @@ const connect = async () => {
     } catch (error) {
         console.log("Ocorreu um erro");
         console.error(error.message);
-    } finally {
-        console.log(process.env.MONGODB_USERNAME, process.env.MONGODB_PASSWORD)
     }
 }
 
