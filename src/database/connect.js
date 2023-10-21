@@ -6,7 +6,7 @@ const connect = async () => {
         console.log("Mongoose Conectado");
     } catch (error) {
         console.log("Ocorreu um erro");
-        console.error(error, error.message);
+        console.error(error.message);
     } finally {
         console.log(process.env.MONGODB_USERNAME, process.env.MONGODB_PASSWORD)
     }
