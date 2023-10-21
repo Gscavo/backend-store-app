@@ -1,21 +1,22 @@
 const express = require("express");
-const UserModel = require("../../../models/user.model");
+const userModel = require("../../../models/user.model");
+const errorLog = require("../../../modules/error");
 
 const router = express.Router();
 
 // Adiciona User
-router.post("", async (req, res) => {
+router.post("/", async (req, res) => {
     const user = req.body;
     
-    const userIsInDB = (await UserModel.find({email: user.email})).length != 0;
+    const userIsInDB = (await userModel.find({email: user.email})).length != 0;
 
     if (userIsInDB) {
-        return res.send("<h1>Ocorreu um erro na requisição!</h1>"+`<p>Usuário já cadastrado!</p>`)
+        return errorLog(res, {message: "Usuário ja cadastrado!"})
     }
 
-    await UserModel.create(user)
+    await userModel.create(user)
         .then((user) => res.status(200).json(user))
-        .catch((err) => res.status(400).send("<h1>Ocorreu um erro na requisição!</h1>"+`<p>${err.message}</p>`));
+        .catch((err) => errorLog(res, err))
 });
 
 router.post("/devTeste", async (req, res) => {
@@ -23,12 +24,11 @@ router.post("/devTeste", async (req, res) => {
 
     try {
         await users.forEach(async (user) => {
-            await UserModel.create(user);
+            await userModel.create(user);
         })
-    } catch(err) {
-        res.status(400).send("<h1>Ocorreu um erro na requisição!</h1>"+`<p>${err.message}</p>`)
-    } finally {
         res.redirect("/users/get/")
+    } catch(err) {
+        errorLog(res, err)
     }
 })
 
