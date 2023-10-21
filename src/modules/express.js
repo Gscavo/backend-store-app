@@ -5,7 +5,7 @@ const usersRoute = require("../routes/users/main")
 
 const app = express();
 
-const port = 5353;
+const port = 8080;
 
 app.use(express.json())
 
