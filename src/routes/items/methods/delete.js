@@ -16,13 +16,13 @@ router.delete('/name/:name', async (req, res) => {
     const name = req.params.name;
 
     await itemModel.findOneAndRemove({name: name})
-        .then(item => res.redirect("/items/get/"))
+        .then(item => res.redirect("/items/"))
         .catch(err => errorLog(res, err));
 })
 
 router.delete('/drop', async (req, res) => {
     await itemModel.deleteMany({})
-        .then(item => res.redirect("/items/get/"))
+        .then(item => res.redirect("/items/"))
         .catch(err => errorLog(res, err));
 })
 

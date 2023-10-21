@@ -6,8 +6,8 @@ const deleteRoute = require("./methods/delete")
 
 const router = express.Router();
 
-router.use("/get", getRoute)
-router.use("/save", postRoute)
-router.use("/del", deleteRoute)
+router.use("", getRoute)
+router.use("", postRoute)
+router.use("", deleteRoute)
 
 module.exports = router
