@@ -24,7 +24,7 @@ router.get("/id/:id", async (req, res) => {
 // Retorna o User com email especifico
 router.get("/email/:email", async (req, res) => {
     const email = req.params.email
-    await userModel.find({email: email})
+    await userModel.findOne({email: email})
         .then((user) => res.status(200).json(user))
         .catch((err) => errorLog(res, err));
 })
@@ -33,7 +33,7 @@ router.get("/email/:email", async (req, res) => {
 router.get("/username/:username", async (req, res) => {
     const username = req.params.username;
 
-    await userModel.find({username: username})
+    await userModel.findOne({username: username})
         .then((user) => res.status(200).json(user))
         .catch((err) => errorLog(res, err));
 })

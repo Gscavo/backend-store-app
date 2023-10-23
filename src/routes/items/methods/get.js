@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
 router.get("/id/:id", async (req, res) => {
     const id = req.params.id;
     
-    await ItemModel.find({id: id})
+    await ItemModel.findById(id)
         .then(items => res.status(200).send(items))
         .catch(err => errorLog(res, err));
 })
@@ -20,7 +20,7 @@ router.get("/id/:id", async (req, res) => {
 router.get("/name/:name", async (req, res) => {
     const name = req.params.name;
 
-    await ItemModel.find({name: name})
+    await ItemModel.findOne({name: name})
         .then(items => res.status(200).send(items))
         .catch(err => errorLog(res, err));
 })

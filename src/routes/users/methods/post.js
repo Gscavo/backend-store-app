@@ -26,7 +26,7 @@ router.post("/devTeste", async (req, res) => {
         await users.forEach(async (user) => {
             await userModel.create(user);
         })
-        res.redirect("/users/get/")
+        res.redirect("/users/")
     } catch(err) {
         errorLog(res, err)
     }
