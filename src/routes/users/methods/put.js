@@ -11,4 +11,4 @@ router.put('/username/:username', (req, res) => {
 
 })
 
-modules.exports = router;
+module.exports = router;
