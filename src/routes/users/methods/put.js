@@ -8,5 +8,7 @@ router.put('/username/:username', (req, res) => {
 
     if (userModel.findOne( {username: username} ) == undefined) { return }
 
-    
+
 })
+
+modules.exports = router;
